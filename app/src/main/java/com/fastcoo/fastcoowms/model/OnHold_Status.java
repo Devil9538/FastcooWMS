@@ -3,16 +3,14 @@ package com.fastcoo.fastcoowms.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class Loginmodel {
+public class OnHold_Status {
 
     @SerializedName("status")
     @Expose
     private Integer status;
     @SerializedName("data")
     @Expose
-    private List<Login_Result> data = null;
+    private OnHold_Data data;
 
     public Integer getStatus() {
         return status;
@@ -22,11 +20,11 @@ public class Loginmodel {
         this.status = status;
     }
 
-    public List<Login_Result> getData() {
+    public OnHold_Data getData() {
         return data;
     }
 
-    public void setData(List<Login_Result> data) {
+    public void setData(OnHold_Data data) {
         this.data = data;
     }
 }

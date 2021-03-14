@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fastcoo.fastcoowms">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -12,11 +16,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FastcooWMS">
 
-        <activity android:name=".view.DashBoard"
+        <activity android:name=".view.InBoundWMS"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <activity android:name=".view.MainActivity"
+
+        <activity
+            android:name=".view.ScheduleWMS"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+
+        <activity
+            android:name=".view.OnHoldWMS"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+
+        <activity android:name=".view.ShipmentInfo" />
+
+        <activity android:name=".view.Scanner" />
+
+        <activity
+            android:name=".view.InventoryWMS"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.DashBoard"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".view.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

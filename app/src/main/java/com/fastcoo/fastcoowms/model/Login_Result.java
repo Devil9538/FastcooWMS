@@ -5,70 +5,39 @@ import com.google.gson.annotations.SerializedName;
 
 public class Login_Result {
 
-    @SerializedName("user_id")
+
+    @SerializedName("id")
     @Expose
-    private String userId;
-    @SerializedName("username")
+    private String id;
+    @SerializedName("name")
     @Expose
-    private String username;
-    @SerializedName("mobile_no")
+    private String name;
+    @SerializedName("email")
     @Expose
-    private String mobileNo;
-    @SerializedName("profile_pic")
-    @Expose
-    private String profilePic;
+    private String email;
 
-    /**
-     * No args constructor for use in serialization
-     *
-     */
-    public Login_Result() {
+    public String getId() {
+        return id;
     }
 
-    /**
-     *
-     * @param profilePic
-     * @param mobileNo
-     * @param userId
-     * @param username
-     */
-    public Login_Result(String userId, String username, String mobileNo, String profilePic) {
-        super();
-        this.userId = userId;
-        this.username = username;
-        this.mobileNo = mobileNo;
-        this.profilePic = profilePic;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getName() {
+        return name;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getMobileNo() {
-        return mobileNo;
-    }
-
-    public void setMobileNo(String mobileNo) {
-        this.mobileNo = mobileNo;
-    }
-
-    public String getProfilePic() {
-        return profilePic;
-    }
-
-    public void setProfilePic(String profilePic) {
-        this.profilePic = profilePic;
-    }
 }

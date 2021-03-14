@@ -1,16 +1,21 @@
 package com.fastcoo.fastcoowms.viewmodel;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.lifecycle.ViewModel;
 
 import com.fastcoo.fastcoowms.R;
-import com.fastcoo.fastcoowms.view.DashBoard;
-import com.fastcoo.fastcoowms.view.MainActivity;
+import com.fastcoo.fastcoowms.view.InBoundWMS;
+import com.fastcoo.fastcoowms.view.InventoryWMS;
+import com.fastcoo.fastcoowms.view.LoginActivity;
+import com.fastcoo.fastcoowms.view.OnHoldWMS;
+import com.fastcoo.fastcoowms.view.ScheduleWMS;
 import com.scwang.wave.MultiWaveHeader;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -41,10 +46,56 @@ public class DashboardViewModel extends ViewModel {
     }
 
     public void logout(LinearLayout logout){
-
+        Activity activity = (Activity)context1;
         dashboard_editor.clear();
         dashboard_editor.commit();
-        Intent logout_1= new Intent(context1, MainActivity.class);
-        context1.startActivity(logout_1);
+        Intent logout_1= new Intent(context1, LoginActivity.class);
+        activity.startActivity(logout_1);
+        activity.finish();
+    }
+
+    public void inventoryWMS(LinearLayout inventory){
+        inventory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Activity activity = (Activity)context1;
+                Intent inventory= new Intent(activity, InventoryWMS.class);
+                activity.startActivity(inventory);
+
+            }
+        });
+
+    }
+    public void onHoldWMS(LinearLayout onhold){
+        onhold.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Activity activity = (Activity)context1;
+                Intent onhold= new Intent(activity, OnHoldWMS.class);
+                activity.startActivity(onhold);
+            }
+        });
+    }
+
+    public void ScheduleWMS(LinearLayout schedule){
+        schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Activity activity = (Activity)context1;
+                Intent schedule= new Intent(activity, ScheduleWMS.class);
+                activity.startActivity(schedule);
+            }
+        });
+    }
+
+    public void InBound(LinearLayout inbound){
+        inbound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Activity activity = (Activity)context1;
+                Intent inbound= new Intent(activity, InBoundWMS.class);
+                activity.startActivity(inbound);
+            }
+        });
     }
 }

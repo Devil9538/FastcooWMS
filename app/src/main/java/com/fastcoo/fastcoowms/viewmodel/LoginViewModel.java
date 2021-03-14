@@ -1,10 +1,11 @@
 package com.fastcoo.fastcoowms.viewmodel;
 
-import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,16 +17,10 @@ import com.fastcoo.fastcoowms.model.ApiData;
 import com.fastcoo.fastcoowms.model.Loginmodel;
 import com.fastcoo.fastcoowms.model.Service;
 import com.fastcoo.fastcoowms.view.DashBoard;
-import com.fastcoo.fastcoowms.view.MainActivity;
 
-import dagger.Module;
-import dagger.Provides;
-import io.reactivex.Single;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
+import java.util.HashMap;
+
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableSingleObserver;
-import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,26 +36,38 @@ public class LoginViewModel extends ViewModel {
     SharedPreferences login_preference;
     SharedPreferences.Editor login_editor;
     Context context1;
+    private ProgressDialog progressDialog;
+    boolean connected = false;
+    HashMap<String,String> login;
 
 
     public void getLogin(String email,String password){
-
+        internetIsConnected();
+        login= new HashMap<>();
+        login.put("username",email);
+        login.put("password",password);
+        progressDialog = ProgressDialog.show(context1, "Login", "Please Wait...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         ApiData data= Service.getRetrofitInstance().create(ApiData.class);
-        Call<Loginmodel> call=data.login(email,password);
+        Call<Loginmodel> call=data.login(login);
         call.enqueue(new Callback<Loginmodel>() {
             @Override
             public void onResponse(Call<Loginmodel> call, Response<Loginmodel> response) {
                 response.body();
-                if(response.body().getStatus().equals(200)){
-                    String user_id= response.body().getResult().getUserId();
-                    String username= response.body().getResult().getUsername();
-                    String mobile_no= response.body().getResult().getMobileNo();
-                    login_editor.putString("user_id",user_id);
-                    login_editor.putString("username",username);
-                    login_editor.putString("mobile_no",mobile_no);
-                    login_editor.commit();
+                if(response.body().getStatus().equals(1)){
+                    for(int i=0;i<response.body().getData().size();i++){
+                        String user_id= response.body().getData().get(i).getId();
+                        String username= response.body().getData().get(i).getName();
+                        String email= response.body().getData().get(i).getEmail();
+                        login_editor.putString("user_id",user_id);
+                        login_editor.putString("username",username);
+                        login_editor.putString("mobile_no",email);
+                        login_editor.commit();
+                    }
                 Intent go = new Intent(context1, DashBoard.class);
                 context1.startActivity(go);
+                progressDialog.dismiss();
 
 
                     Toast.makeText(context1, "login success", Toast.LENGTH_SHORT).show();
@@ -71,7 +78,8 @@ public class LoginViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<Loginmodel> call, Throwable t) {
-                toastMessageObserver.setValue(t.getLocalizedMessage());
+//                toastMessageObserver.setValue(t.getLocalizedMessage());
+                progressDialog.dismiss();
 
             }
         });
@@ -121,5 +129,19 @@ public class LoginViewModel extends ViewModel {
             context1.startActivity(i);
 
         }
+    }
+
+    public Boolean internetIsConnected(){
+        ConnectivityManager connectivityManager = (ConnectivityManager)context1.getSystemService(context1.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+            return connected;
+        }
+        else
+            connected = false;
+        Toast.makeText(context1, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+        return connected;
     }
 }

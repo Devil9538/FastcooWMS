@@ -16,7 +16,7 @@ public class Service {
 
     private static Retrofit retrofit;
 
-    private static final String BASE_URl= "https://api.fastcoo-tech.com/";
+    private static final String BASE_URl= "https://api.fastcoo-tech.com/Lastmile/";
 
 
     public static Retrofit getRetrofitInstance(){

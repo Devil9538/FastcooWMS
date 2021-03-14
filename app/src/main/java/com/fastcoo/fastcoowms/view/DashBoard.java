@@ -57,7 +57,13 @@ public class DashBoard extends AppCompatActivity {
             }
         });
 
+        dashboardViewModel.inventoryWMS(inventory);
+        dashboardViewModel.onHoldWMS(onhold);
+        dashboardViewModel.ScheduleWMS(schedule);
+        dashboardViewModel.InBound(inbound);
+
     }
+
 
 
 }

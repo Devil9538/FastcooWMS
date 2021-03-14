@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardCornerRadius="10dp"
+    card_view:cardElevation="3dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_bg">
+
+        <ImageView
+            android:id="@+id/img_shipment"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_inbound"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_shipment_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#334455"
+            card_view:layout_constraintLeft_toRightOf="@id/img_shipment"
+            card_view:layout_constraintStart_toEndOf="@id/img_shipment"
+            android:layout_marginTop="13dp"
+            card_view:layout_constraintTop_toTopOf="parent"
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_1_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text 1: "
+            card_view:layout_constraintStart_toStartOf="@id/img_shipment"
+            card_view:layout_constraintTop_toBottomOf="@id/img_shipment"
+            android:textSize="15sp"
+            android:padding="5dp"
+            android:fontFamily="@font/lato_bold_italic"
+            android:textColor="@color/secondary_text"/>
+
+        <TextView
+            android:id="@+id/tv_1_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            card_view:layout_constraintBottom_toBottomOf="@+id/tv_1_info"
+            card_view:layout_constraintStart_toEndOf="@+id/tv_1_info"
+            card_view:layout_constraintTop_toTopOf="@+id/tv_1_info"
+            android:text="Value"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_2_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text 1: "
+            card_view:layout_constraintStart_toStartOf="@id/tv_1_info"
+            card_view:layout_constraintTop_toBottomOf="@id/tv_1_info"
+            android:textSize="15sp"
+            android:padding="5dp"
+            android:fontFamily="@font/lato_bold_italic"
+            android:textColor="@color/secondary_text"/>
+
+        <TextView
+            android:id="@+id/tv_2_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            card_view:layout_constraintBottom_toBottomOf="@+id/tv_2_info"
+            card_view:layout_constraintStart_toEndOf="@+id/tv_2_info"
+            card_view:layout_constraintTop_toTopOf="@+id/tv_2_info"
+            android:text="Value"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_3_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text 1: "
+            card_view:layout_constraintStart_toStartOf="@id/tv_2_info"
+            card_view:layout_constraintTop_toBottomOf="@id/tv_2_info"
+            android:textSize="15sp"
+            android:padding="5dp"
+            android:fontFamily="@font/lato_bold_italic"
+            android:textColor="@color/secondary_text"/>
+
+        <TextView
+            android:id="@+id/tv_3_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            card_view:layout_constraintBottom_toBottomOf="@+id/tv_3_info"
+            card_view:layout_constraintStart_toEndOf="@+id/tv_3_info"
+            card_view:layout_constraintTop_toTopOf="@+id/tv_3_info"
+            android:text="Value"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_4_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text 1: "
+            card_view:layout_constraintStart_toStartOf="@id/tv_3_info"
+            card_view:layout_constraintTop_toBottomOf="@id/tv_3_info"
+            android:textSize="15sp"
+            android:padding="5dp"
+            android:fontFamily="@font/lato_bold_italic"
+            android:textColor="@color/secondary_text"/>
+
+        <TextView
+            android:id="@+id/tv_4_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            card_view:layout_constraintBottom_toBottomOf="@+id/tv_4_info"
+            card_view:layout_constraintStart_toEndOf="@+id/tv_4_info"
+            card_view:layout_constraintTop_toTopOf="@+id/tv_4_info"
+            android:text="Value"
+            android:padding="5dp"/>
+
+        <ImageView
+            android:id="@+id/img_details"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintTop_toBottomOf="parent"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/ic_next_arrow"/>
+
+
+
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>
